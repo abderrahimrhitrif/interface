@@ -9,15 +9,12 @@ export default function App() {
   const [ingredients, setIngredients] = useState([]);
 
   const skinConcerns = [
-    { id: 'acne-fighting', label: 'Acne Fighting', icon: 'CheckCircle' },
-    { id: 'acne-trigger', label: 'Acne Trigger', icon: 'CheckCircle' },
     { id: 'anti-aging', label: 'Anti-Aging', icon: 'CheckCircle' },
     { id: 'brightening', label: 'Brightening', icon: 'CheckCircle' },
     { id: 'dark-spots', label: 'Dark Spots', icon: 'CheckCircle' },
     { id: 'drying', label: 'Drying', icon: 'CheckCircle' },
     { id: 'good-for-oily-skin', label: 'Good For Oily Skin', icon: 'CheckCircle' },
     { id: 'hydrating', label: 'Hydrating', icon: 'CheckCircle' },
-    { id: 'irritating', label: 'Irritating', icon: 'CheckCircle' },
     { id: 'may-worsen-oily-skin', label: 'May Worsen Oily Skin', icon: 'CheckCircle' },
     { id: 'redness-reducing', label: 'Redness Reducing', icon: 'CheckCircle' },
     { id: 'reduces-irritation', label: 'Reduces Irritation', icon: 'CheckCircle' },
@@ -53,15 +50,12 @@ export default function App() {
 
   const handlePredict = async () => {
     const allowedConcerns = new Set([
-      'acne-fighting',
-      'acne-trigger',
       'anti-aging',
       'brightening',
       'dark-spots',
       'drying',
       'good-for-oily-skin',
       'hydrating',
-      'irritating',
       'may-worsen-oily-skin',
       'redness-reducing',
       'reduces-irritation',
