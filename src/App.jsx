@@ -15,7 +15,6 @@ export default function App() {
     { id: 'brightening', label: 'Brightening', icon: 'CheckCircle' },
     { id: 'dark-spots', label: 'Dark Spots', icon: 'CheckCircle' },
     { id: 'drying', label: 'Drying', icon: 'CheckCircle' },
-    { id: 'eczema', label: 'Eczema', icon: 'CheckCircle' },
     { id: 'good-for-oily-skin', label: 'Good For Oily Skin', icon: 'CheckCircle' },
     { id: 'hydrating', label: 'Hydrating', icon: 'CheckCircle' },
     { id: 'irritating', label: 'Irritating', icon: 'CheckCircle' },
@@ -23,7 +22,6 @@ export default function App() {
     { id: 'redness-reducing', label: 'Redness Reducing', icon: 'CheckCircle' },
     { id: 'reduces-irritation', label: 'Reduces Irritation', icon: 'CheckCircle' },
     { id: 'reduces-large-pores', label: 'Reduces Large Pores', icon: 'CheckCircle' },
-    { id: 'rosacea', label: 'Rosacea', icon: 'CheckCircle' },
     { id: 'scar-healing', label: 'Scar Healing', icon: 'CheckCircle' },
     { id: 'skin-texture', label: 'Skin Texture', icon: 'CheckCircle' },
   ];
@@ -61,7 +59,6 @@ export default function App() {
       'brightening',
       'dark-spots',
       'drying',
-      'eczema',
       'good-for-oily-skin',
       'hydrating',
       'irritating',
@@ -69,7 +66,6 @@ export default function App() {
       'redness-reducing',
       'reduces-irritation',
       'reduces-large-pores',
-      'rosacea',
       'scar-healing',
       'skin-texture'
     ]);
@@ -245,7 +241,7 @@ export default function App() {
                 <div className="flex justify-between">
                   <button
                     className="px-6 py-2 border border-gray-300 rounded-full flex items-center gap-2"
-                    onClick={prevStep}
+                    onClick={() => window.location.reload()}
                   >
                     Back
                   </button>
@@ -265,7 +261,7 @@ export default function App() {
                 <div className="flex justify-between">
                   <button
                     className="px-6 py-2 border border-gray-300 rounded-full flex items-center gap-2"
-                    onClick={prevStep}
+                    onClick={() => window.location.reload()}
                   >
                     Back
                   </button>
