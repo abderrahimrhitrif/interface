@@ -12,12 +12,9 @@ export default function App() {
     { id: 'anti-aging', label: 'Anti-Aging', icon: 'CheckCircle' },
     { id: 'brightening', label: 'Brightening', icon: 'CheckCircle' },
     { id: 'dark-spots', label: 'Dark Spots', icon: 'CheckCircle' },
-    { id: 'drying', label: 'Drying', icon: 'CheckCircle' },
-    { id: 'good-for-oily-skin', label: 'Good For Oily Skin', icon: 'CheckCircle' },
     { id: 'hydrating', label: 'Hydrating', icon: 'CheckCircle' },
     { id: 'may-worsen-oily-skin', label: 'May Worsen Oily Skin', icon: 'CheckCircle' },
     { id: 'redness-reducing', label: 'Redness Reducing', icon: 'CheckCircle' },
-    { id: 'reduces-irritation', label: 'Reduces Irritation', icon: 'CheckCircle' },
     { id: 'reduces-large-pores', label: 'Reduces Large Pores', icon: 'CheckCircle' },
     { id: 'scar-healing', label: 'Scar Healing', icon: 'CheckCircle' },
     { id: 'skin-texture', label: 'Skin Texture', icon: 'CheckCircle' },
@@ -49,23 +46,38 @@ export default function App() {
   };
 
   const handlePredict = async () => {
-    const allowedConcerns = new Set([
-      'anti-aging',
-      'brightening',
-      'dark-spots',
-      'drying',
-      'good-for-oily-skin',
-      'hydrating',
-      'may-worsen-oily-skin',
-      'redness-reducing',
-      'reduces-irritation',
-      'reduces-large-pores',
-      'scar-healing',
-      'skin-texture'
-    ]);
-    const filteredConcerns = selectedConcerns.filter(id => allowedConcerns.has(id));
+    const selectedMapping = {
+      "anti-aging": "Anti-Aging",
+      "brightening": "Brightening",
+      "dark-spots": "Dark Spots",
+      "hydrating": "Hydrating",
+      "may-worsen-oily-skin": "May Worsen Oily Skin",
+      "redness-reducing": "Redness Reducing",
+      "reduces-large-pores": "Reduces Large Pores",
+      "scar-healing": "Scar Healing",
+      "skin-texture": "Skin Texture",
+    };
+    const historyMapping = {
+      acne: ["Acne Fighting", "Acne Trigger"],
+      dryness: ["Drying"],
+      irritation: ["Irritating", "Reduces Irritation"],
+      oiliness: ["Good For Oily Skin"],
+      eczema: ["Eczema"],
+      rosacea: ["Rosacea"],
+    };
+    let apiConcerns = [];
+    selectedConcerns.forEach(id => {
+      if (selectedMapping[id]) apiConcerns.push(selectedMapping[id]);
+    });
+    Object.entries(skinHistoryAnswers).forEach(([key, value]) => {
+      if (value === true && historyMapping[key]) {
+        apiConcerns.push(...historyMapping[key]);
+      }
+    });
+    // Remove duplicates
+    apiConcerns = [...new Set(apiConcerns)];
     const payload = {
-      after_use: filteredConcerns,
+      after_use: apiConcerns,
       product_type: "serum"
     };
   
