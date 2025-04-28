@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AlertCircle, Check, X, Loader2, ChevronRight, Info, Award, Shield, Star, ShoppingBag } from 'lucide-react';
+import './App.css'; // Import CSS for animations
 
 export default function App() {
   const [selectedConcerns, setSelectedConcerns] = useState({
@@ -272,7 +273,7 @@ export default function App() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Recommended Ingredients Column */}
-                  <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 p-5 shadow-sm">
+                  <div className={`bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 p-5 shadow-sm transition-transform duration-500 ${activeStep === 2 ? 'translate-x-0' : '-translate-x-full'}`}>
                     <h3 className="text-lg font-semibold text-emerald-800 mb-4 flex items-center">
                       <div className="bg-emerald-100 p-1.5 rounded-full mr-2">
                         <Check className="w-5 h-5 text-emerald-600" />
@@ -305,7 +306,7 @@ export default function App() {
                   </div>
 
                   {/* Not Recommended Ingredients Column */}
-                  <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl border border-gray-200 p-5 shadow-sm">
+                  <div className={`bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl border border-gray-200 p-5 shadow-sm transition-transform duration-500 ${activeStep === 2 ? 'translate-x-0' : 'translate-x-full'}`}>
                     <h3 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
                       <div className="bg-gray-200 p-1.5 rounded-full mr-2">
                         <X className="w-5 h-5 text-gray-600" />
@@ -371,7 +372,7 @@ export default function App() {
         
         {/* Step 3: Product Recommendations */}
         {activeStep === 3 && recommendedProducts && (
-          <div className="space-y-8">
+          <div className={`space-y-8 transition-transform duration-500 ${activeStep === 3 ? 'translate-x-0' : 'translate-x-full'}`}>
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="border-b border-gray-100 bg-gray-50 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center">
